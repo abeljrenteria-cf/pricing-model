@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	</head>
+	<body>
+		<h2>Pricing Tool</h2>
+		<p>Updated: 10/12/21 <br>
+		Fill in the below parameters to obtain an estimated pricing for a campaign placement. Once the form is submitted, you will receive an email with the estimated pricing. 
+		</p>
+		<br>
+		<form action="/" method="post">
+		<label>Placement Start Date:</label>
+  		<input type="date" id="start_date" name="start_date">
+  		<label>Placement End Date:</label>
+  		<input type="date" id="end_date" name="end_date">
+  		<br>
+  		<p>Product Type:</p>
+  		<input type="radio" id="In-stream" name="product_type" value="In-stream">
+  		<label for="In-stream">Skip TrueView</label>
+  		<br><br>
+		<p>Cost Type:</p>
+		<input type="radio" id="Manual-CPV" name="cost-type" value="Manual CPV">
+  		<label for="Manual-CPV">CPV</label>
+  		<br>
+  		<p>Brand Vertical Classification:</p>
+		<select name="brand_class">
+			<option value="Alcohol/LDA">Alcohol/LDA</option>
+			<option value="Arts & Entertainment">Arts & Entertainment</option>
+			<option value="Automotive">Automotive</option>
+			<option value="Charitable Foundations">Charitable Foundations</option>
+			<option value="Education">Education</option>
+			<option value="Family & Parenting">Family & Parenting</option>
+			<option value="Health & Fitness">Health & Fitness</option>
+			<option value="Hobbies & Interests">Hobbies & Interests</option>
+			<option value="Home & Garden">Home & Garden</option>
+			<option value="Law, Govt & Politics">Law, Govt & Politics</option>
+			<option value="Marketing & Media Services">Marketing & Media Services</option>
+			<option value="Quick Service Restaurant (QSR)">Quick Service Restaurant (QSR)</option>
+			<option value="Society">Society</option>
+			<option value="Sports">Sports</option>
+			<option value="Technology & Computing">Technology & Computing</option>
+			<option value="Travel & Tourism">Travel & Tourism</option>
+			<option value="Uncategorized">Uncategorized</option>
+			<option value="Business, Finance, Real Estate">Business, Finance, Real Estate</option>
+			<option value="CPG">CPG</option>
+			<option value="Energy Oil/Gas">Energy Oil/Gas</option>
+			<option value="CPG/Food & Drink">CPG/Food & Drink</option>
+			<option value="Retail, Style & Fashion">Retail, Style & Fashion</option>
+			<option value="Telecommunication">Telecommunication</option>
+		</select>
+		<br><br>
+		<button type="submit">SUBMIT</button>
+		<br><br>
+		<hr>
+		<br>
+<!-- Display Submited Values -->
+		<div>
+			<h3>Results</h3>
+			<p>Start Date: {{var1}}</p>
+			<p>End Date: {{var2}}</p>
+			<p>Product: {{var3}}</p>
+			<p>Cost Method: {{var4}}</p>
+			<p>Category: {{var5}}</p>
+			<br>
+			<p>CPV: ${{var6}}</p>
+		</div>
+		<div id="chart1"></div>
+	</body>
+	<!-------- Plotly -------->
+	<script>
+  		var graph1 = {{graph1JSON | safe}};
+  		Plotly.plot("chart1",graph1,{})
+	</script>
+</html>
