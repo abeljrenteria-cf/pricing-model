@@ -41,8 +41,6 @@ def calculate_cpv(df):
     idx = pd.date_range('1900-01-01', '1900-12-31')
     s = pivot.reindex(idx, fill_value=np.nan)
     s['COST'] = s['COST'].interpolate()
-    s['COST'] = s['COST'].pad()
-    s['COST'] = s['COST'].bfill()
 
     return s
 
